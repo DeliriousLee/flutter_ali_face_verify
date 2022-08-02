@@ -1,5 +1,4 @@
 #import "AliFaceVertifyPlugin.h"
-#import "AliFaceVertifyManager.h"
 #import <AliyunIdentityManager/AliyunIdentityPublicApi.h>
 @implementation AliFaceVertifyPlugin
 static AliFaceVertifyCallBack * _completion;
@@ -9,6 +8,7 @@ static AliFaceVertifyCallBack * _completion;
       methodChannelWithName:@"ali_face_vertify"
             binaryMessenger:[registrar messenger]];
   AliFaceVertifyPlugin* instance = [[AliFaceVertifyPlugin alloc] init];
+    AliFaceVertifyManagerSetup([registrar messenger], instance);
   _completion = [[AliFaceVertifyCallBack alloc] initWithBinaryMessenger:[registrar messenger]];
   [registrar addMethodCallDelegate:instance channel:channel];
 }
@@ -26,7 +26,6 @@ static AliFaceVertifyCallBack * _completion;
 
 - (void)initWithError:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
     [AliyunSdk init];
-    
 }
 
 - (void)openFaceCertifyCertifyId:(nonnull NSString *)certifyId error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {

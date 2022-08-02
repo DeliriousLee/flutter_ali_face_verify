@@ -35,11 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 NSObject<FlutterMessageCodec> *AliFaceVertifyManagerGetCodec(void);
 
 @protocol AliFaceVertifyManager
-/// @return `nil` only when `error != nil`.
+
 - (void)initWithError:(FlutterError *_Nullable *_Nonnull)error;
-/// @return `nil` only when `error != nil`.
+
 - (nullable NSDictionary *)getMetaInfoWithError:(FlutterError *_Nullable *_Nonnull)error;
-/// @return `nil` only when `error != nil`.
+
 - (void)openFaceCertifyCertifyId:(NSString *)certifyId error:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
