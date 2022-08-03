@@ -1,13 +1,6 @@
 # ali_face_vertify
-
-A new flutter plugin project.
-
-## Getting Started
-
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+阿里的实名认证
+https://help.aliyun.com/document_detail/163106.html
 
 # 集成
 需要在主工程```$flutterProject/android/app/```下添加```libs```文件夹，其中的内容是本plugins中的
