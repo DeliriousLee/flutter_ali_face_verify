@@ -24,5 +24,5 @@ A new flutter plugin project.
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 x86_64','OTHER_LDFLAGS' => '-ObjC -framework "BioAuthAPI" -lxml2' }
+s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386','OTHER_LDFLAGS' => '-ObjC -framework "BioAuthAPI" -lxml2' }
 end
