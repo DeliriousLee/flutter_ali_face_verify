@@ -28,6 +28,20 @@ dependencies {
 }
 ```
 以获得aar引包
+## 权限
+### Android
+```
+// 授权获取手机状态的权限。
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />                
+// 授权获取接入网络的权限。开发人员需注意，6.0以上系统属于动态权限。     
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+```
+### iOS
+info.plist添加相机使用权限
+```
+<key>NSCameraUsageDescription</key>
+	<string>调取相机以获取头像</string>
+```
 # 代码混淆
 如果需要代码混淆，在主工程中app/build.gradle中添加
 ```
