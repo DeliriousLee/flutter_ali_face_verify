@@ -10,7 +10,7 @@ a specialized package that includes platform-specific implementation code for
 Android and/or iOS.
 
 # 集成
-需要在主工程```$flutterProject/android/app/```下添加libs文件夹，其中的内容是本plugins中的
+需要在主工程```$flutterProject/android/app/```下添加```libs```文件夹，其中的内容是本plugins中的
 ```
 APSecuritySDK-DeepSec-7.0.1.20220617.jiagu.aar
 Android-AliyunDevice-FG-10022.2.aar
