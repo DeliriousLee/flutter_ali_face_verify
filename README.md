@@ -70,7 +70,7 @@ class _FaceVertifyPageState extends State<FaceVertifyPage>
     var stringObj = jsonEncode(metaInfo);
     /// 后台获取到metaInfo后根据服务端sdk生成certifyId，根据id，去唤醒sdk
     
-    var rsp = await  Dio().post('/v3/user/auth/init',
+    var rsp = await  Dio().post('user/auth/',
         queryParameters: {'metaInfo': stringObj, 'authType': 1});
     if (rsp.data is String) {
       String certifyId = rsp.data ?? '';
