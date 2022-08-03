@@ -42,6 +42,67 @@ info.plist添加相机使用权限
 <key>NSCameraUsageDescription</key>
 	<string>调取相机以获取头像</string>
 ```
+### example
+```
+// ignore_for_file: prefer_const_constructors_in_immutables
+
+class FaceVertifyPage extends StatefulWidget {
+  FaceVertifyPage({Key? key}) : super(key: key);
+
+  @override
+  State<FaceVertifyPage> createState() => _FaceVertifyPageState();
+}
+
+class _FaceVertifyPageState extends State<FaceVertifyPage>
+    implements AliFaceVertifyCallBack {
+  @override
+  void initState() {
+    testFaceInitial();
+    AliFaceVertifyCallBack.setup(this);
+    super.initState();
+  }
+
+  void testFaceInitial() async {
+    var manager = AliFaceVertifyManager();
+    AliFaceVertifyCallBack;
+    var metaInfo = await manager.getMetaInfo();
+    /// 将metaInfo转为String之后传给后台做校验
+    var stringObj = jsonEncode(metaInfo);
+    /// 后台获取到metaInfo后根据服务端sdk生成certifyId，根据id，去唤醒sdk
+    
+    var rsp = await  Dio().post('/v3/user/auth/init',
+        queryParameters: {'metaInfo': stringObj, 'authType': 1});
+    if (rsp.data is String) {
+      String certifyId = rsp.data ?? '';
+      debugPrint(certifyId);
+
+      await manager.openFaceCertify(certifyId);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('人脸验证页面')),
+      ),
+    );
+  }
+
+  @override
+  void certifyCompletion(FaceVerResponse response) {
+    if (response.code == ZIMResponseStatus.ZIMResponseSuccess) {
+      ///showToast('人脸认证完成');
+      
+    } else {
+      ///showToast(response.reason ?? '');
+    }
+  }
+}
+```
+<img src= "https://user-images.githubusercontent.com/24474112/182522655-af341281-1c57-4368-9410-ea9747027449.PNG" alt="IMG_4508" width="375" height="800"/>
+<img src="https://user-images.githubusercontent.com/24474112/182522646-959a1601-a449-4162-92f2-44ee28158bcc.PNG" alt="IMG_4507" width="375" height="800"/>
+
 # 代码混淆
 如果需要代码混淆，在主工程中app/build.gradle中添加
 ```
