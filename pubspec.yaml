@@ -3,6 +3,7 @@ description: integrated Ali face verify sdk
 version: 1.0.1
 homepage: https://github.com/DeliriousLee
 
+
 environment:
   sdk: ">=2.16.1 <3.0.0"
   flutter: ">=2.5.0"
